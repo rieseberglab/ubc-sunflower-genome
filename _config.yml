@@ -1,0 +1,21 @@
+#theme: 'just-the-docs'
+
+title: UBC Sunflower Genome Dataset
+description: A dataset capturing the genetic diversity of Heliantus
+
+# Added to all absolute links as a prefix. href="/foo.css" becomes href="{baseurl}/foo.csss
+# leave to empty string because we're running from the root of the repo.
+# baseurl: /ubc-sunflower-genome.org
+
+# Configuration information:
+# https://pmarsceill.github.io/just-the-docs/
+remote_theme: "UBC-NSS/just-the-docs"
+
+# Enable or disable the site search
+search_enabled: true
+
+# github page URL google analytics property
+ga_tracking: "UA-74369115-3"
+
+# dark or nil
+# color_scheme: "dark"
