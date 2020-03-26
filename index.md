@@ -47,7 +47,11 @@ datasets (preserving only high-quality variants).
 
 ## How was this dataset produced?
 
-The dataset was created with a novel open-source framework for
+The plant collection, and creation of the raw dataset is the fruit of
+an intense several years of collaborative effort by members of the
+Rieseberg Lab (See the [Contact page](/contact/)).
+
+The raw data was processed with a novel open-source framework for
 reproducibility developed at UBC, called "Bunnies"
 (https://github.com/rieseberglab/bunnies). Bunnies allows developers to
 express their data workflows in a reproducible way.
@@ -67,6 +71,7 @@ parameters).Data-flow-graphs (e.g. makefiles) written with bunnies can
 use this dataset as a cache of "partial results" for any downstream
 analysis.
 
-One of the goals with the This workflow will greatly reduce the amount of time spent on
-bioinformatic analyses for members working downstream, as they will be
-able to efficiently share and find previously produced results.
+One of the goals with the This workflow will greatly reduce the amount
+of time spent on bioinformatic analyses for members working
+downstream, as they will be able to efficiently share and find
+previously produced results.
