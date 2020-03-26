@@ -1,0 +1,36 @@
+Name: "University of British Columbia Sunflower Genome Dataset"
+Description: |
+  This dataset captures Sunflower's genetic diversity originating
+  from thousands of wild, cultivated, and landrace sunflower
+  individuals distributed across North America.
+
+  The data consists of raw sequences, aligned sequences (to
+  three different reference genomes), and sets of SNPs.
+Documentation: https://
+Contact:
+ManagedBy:
+UpdateFrequency:
+Tags:
+  -
+  License:
+  Resources:
+    - Description:
+        ARN:
+	    Region:
+	        Type:
+		DataAtWork:
+		  Tutorials:
+		      - Title:
+		            URL:
+			          AuthorName:
+				        AuthorURL:
+					  Tools & Applications:
+					      - Title:
+					            URL:
+						          AuthorName:
+							        AuthorURL:
+								  Publications:
+								      - Title:
+								            URL:
+									          AuthorName:
+										        AuthorURL:
