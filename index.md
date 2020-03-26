@@ -52,8 +52,7 @@ an intense several years of collaborative effort by members of the
 Rieseberg Lab (See the [Contact page](/contact/)).
 
 The raw data was processed with a novel open-source framework for
-reproducibility developed at UBC, called "Bunnies"
-(https://github.com/rieseberglab/bunnies). Bunnies allows developers to
+reproducibility developed at UBC, called ["Bunnies"](https://github.com/rieseberglab/bunnies). Bunnies allows developers to
 express their data workflows in a reproducible way.
 
 The data files produced by the framework however, are presented in
