@@ -4,33 +4,43 @@ Description: |
   from thousands of wild, cultivated, and landrace sunflower
   individuals distributed across North America.
 
-  The data consists of raw sequences, aligned sequences (to
-  three different reference genomes), and sets of SNPs.
-Documentation: https://
-Contact:
-ManagedBy:
-UpdateFrequency:
+  The data consists of raw sequences and associated botanical metadata,
+  aligned sequences (to three different reference genomes), and sets of
+  SNPs computed across several cohorts.
+
+Documentation: "https://rieseberglab.github.io/ubc-sunflower-genome/"
+Contact: "UBC Botany Sunflower <sunflower@botany.ubc.ca>"
+ManagedBy: "Jean-Sebastien Legare <jslegare@cs.ubc.ca>"
+UpdateFrequency: "Twice per year."
 Tags:
-  -
-  License:
-  Resources:
-    - Description:
-        ARN:
-	    Region:
-	        Type:
-		DataAtWork:
-		  Tutorials:
-		      - Title:
-		            URL:
-			          AuthorName:
-				        AuthorURL:
-					  Tools & Applications:
-					      - Title:
-					            URL:
-						          AuthorName:
-							        AuthorURL:
-								  Publications:
-								      - Title:
-								            URL:
-									          AuthorName:
-										        AuthorURL:
+   - agriculture
+   - biodiversity
+   - bioinformatics
+   - biology
+   - food security
+   - genetic
+   - genomic
+   - life sciences
+   - whole genome sequencing
+License: Public Domain
+Resources:
+  - Description:
+      ARN:
+      Region:
+      Type:
+DataAtWork:
+  Tutorials:
+    - Title:
+      URL:
+      AuthorName:
+      AuthorURL:
+  Tools & Applications:
+    - Title:
+      URL:
+      AuthorName:
+      AuthorURL:
+  Publications:
+    - Title:
+      URL:
+      AuthorName:
+      AuthorURL:
