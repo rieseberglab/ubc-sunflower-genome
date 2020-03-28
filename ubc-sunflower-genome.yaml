@@ -24,10 +24,10 @@ Tags:
    - whole genome sequencing
 License: Public Domain
 Resources:
-  - Description:
-      ARN:
-      Region:
-      Type:
+  - Description: "UBC Sunflower Genome Data 1"
+    ARN: "arn:aws:s3:::ubc-sunflower-genome"
+    Region: "us-west-2"
+    Type: "S3 Bucket"
 DataAtWork:
   Tutorials:
     - Title:
