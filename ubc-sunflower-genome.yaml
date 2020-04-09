@@ -28,19 +28,3 @@ Resources:
     ARN: "arn:aws:s3:::ubc-sunflower-genome"
     Region: "us-west-2"
     Type: "S3 Bucket"
-DataAtWork:
-  Tutorials:
-    - Title:
-      URL:
-      AuthorName:
-      AuthorURL:
-  Tools & Applications:
-    - Title:
-      URL:
-      AuthorName:
-      AuthorURL:
-  Publications:
-    - Title:
-      URL:
-      AuthorName:
-      AuthorURL:
