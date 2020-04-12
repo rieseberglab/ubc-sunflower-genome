@@ -14,8 +14,9 @@ nav_order: 2
 
 ### Ha412H0 Reference Genome
 
- 1.
+ 1. Publication pending. Web portal accessible here: https://sunflowergenome.org/jbrowse_current/?data=extdata%2FHA412HOv2
 
 ### HanXRQ Reference Genome
 
- 1.
+ 1. Badouin, H. et al. **The sunflower genome provides insights into oil metabolism, flowering and Asterid evolution.** Nature 546, 148 (2017).
+    [portal](https://www.heliagene.org/HanXRQ-SUNRISE/)
