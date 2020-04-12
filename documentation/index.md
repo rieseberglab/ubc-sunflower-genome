@@ -97,9 +97,9 @@ unique to this dataset, and some (older ones) are also present on
 NCBI's Short Read Archive.
 
 The dataset also contains the results of several analyses. Read below
-to understand the layout..
+to understand the layout.
 
-#### Reference Genomes
+### Reference Genomes
 
 The dataset includes 4 reference genomes (fasta format, with indexes) for Heliantus, for which
 we use the following identifiers:
@@ -112,37 +112,42 @@ we use the following identifiers:
   hanxrqv1: s3://ubc-sunflower-genome/references/HanXRQr1.0-20151230/genome/HanXRQr1.0-20151230.fa
 ```
 
-#### Callset (Cohort) Organization
+### Callset (Cohort) Organization
 
 The final result of the analyses are variant call sets (in VCF
 format).  The callsets compare N different samples with respect to
 each other and against a known reference genome.  The available groups are listed in
-the `cohorts` subfolder of the bucket.  We have one group for the
+the `cohorts` subfolder of the bucket.  We have one cohort for the
 moment, which encapsulates all of the samples, but we will uploading
 more shortly.
 
-Each group starts with two manifest files, containing the list of sample ids,
+Each cohort folder is specified with two manifest files, containing the list of sample ids,
 and locations of the raw sequences compared in the set.
 
 ```
-	# hierarchy
+    # cohort folder (relative to top of bucket)
     cohorts/<grefid>/<cohortid>/samples.json
-	cohorts/<grefid>/<cohortid>/sample-names.tsv
+    cohorts/<grefid>/<cohortid>/sample-names.tsv
 ```
 
  - `sample-names.tsv`: The list of sample identifiers/names included in the cohort.
     One sample name per line. Blank lines and lines starting with `#` should be ignored.
 
- - `samples.json`: List the sequencing runs that are to be compared in the cohort. Each line
+ - `samples.json`: List the sequencing `runs` that are to be compared in the cohort. Each line
     is one separate document providing metadata about the run. Example line:
-    
-	```{"r1": ["s3://ubc-sunflower-genome/sequence/projects/10090/HI.1699.005.Index_23.291C_R1.fastq.gz", {"md5": "f9bf7e9183fee15e05b057eb8121e200"}],
-	    "r2": ["s3://ubc-sunflower-genome/sequence/projects/10090/HI.1699.005.Index_23.291C_R2.fastq.gz", {"md5": "a674b7d6fb1fd6485428c552d3638564"}],
-		"runid": "HI.1699.005.Index_23.291C", "sample_name": "291C", "species": "UNKNOWN"
-	   }
+
+	```
+    {"r1": ["s3://...HI.1699.005.Index_23.291C_R1.fastq.gz", {"md5": "f9bf7e9183fee15e05b057eb8121e200"}],
+     "r2": ["s3://...HI.1699.005.Index_23.291C_R2.fastq.gz", {"md5": "a674b7d6fb1fd6485428c552d3638564"}],
+     "runid": "HI.1699.005.Index_23.291C", "sample_name": "291C", "species": "UNKNOWN"
+    }
     ```
 
-#### Whole-Genome Sequences (ILLUMINA)
+**Currently available cohorts:**
+
+  - `cohorts/ha412v2/wgs_all/`: All known samples compared in one bundle.
+
+### Whole-Genome Sequences (ILLUMINA)
 
 The sequences are illumina whole-genome-sequenced, paired-end. They
 come in (compressed) fastq format, in either a gzip envelope, or the
@@ -150,20 +155,27 @@ NCBI short-read archive format (.sra). When the project started, not
 all samples were available on the SRA, so we have been relying on
 both formats.
 
-On a couple occasions, we have discovered errors in the metadata
-processing performed by the SRA. Some of the SRA entries have been to
-re-processed (and sra files in the archive have been updated), while
-keeping the same run ids. The metadata manifests in this dataset
-indicate the SRA run ids (i.e. `SRRXXX...`) when available, but we
-also include a copy of the archive files that we downloaded at the
-time the analysis started, to permit full reproducibility.
+_Note: regarding the presence of .sra files in the dataset._ NCBI is
+the authoritative source for .sra files usually, but after signalling
+some errors in the metadata of a few entries on their site files have
+updated files in place (while keeping the same run ids).  Depending
+when the .sra files are downloaded, the same run ID might produce a
+different archive from NCBI.  We include a copy of the archive files
+to permit full reproducibility.
 
-#### Aligned Sequences
+### Aligned Sequences
 
-#### Genotypes (GATK Genomic VCFs, i.e. .g.vcf)
+Runs are aligned to a reference genome to produce an aligned BAM, and
+then aligned runs are subsequently grouped by sample name by a merge
+operation.
 
-#### Short Variants
+### Genotypes (GATK Genomic VCFs, i.e. .g.vcf)
 
-### Choosing Samples.
+Each aligned BAM is then fed through GATK's HaplotypeCaller to produce
+a Genomic VCF (.g.vcf).
 
-### Next Steps
+### Raw Short Variants
+
+All the .g.vcf of a cohort are logically split in genomic windows of
+1Mbp, and for each window, Gatk's GenotypeGVCFs is called to compare
+the genotypes across the cohort. This produces a "raw" VCF file.
