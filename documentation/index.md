@@ -146,6 +146,8 @@ and locations of the raw sequences compared in the set.
 **Currently available cohorts:**
 
   - `cohorts/ha412v2/wgs_all/`: All known samples compared in one bundle.
+     - s3://ubc-sunflower-genome/cohorts/ha412v2/wgs_all/sample-names.tsv
+     - s3://ubc-sunflower-genome/cohorts/ha412v2/wgs_all/samples.json
 
 ### Whole-Genome Sequences (ILLUMINA)
 
@@ -157,11 +159,12 @@ both formats.
 
 _Note: regarding the presence of .sra files in the dataset._ NCBI is
 the authoritative source for .sra files usually, but after signalling
-some errors in the metadata of a few entries on their site files have
-updated files in place (while keeping the same run ids).  Depending
-when the .sra files are downloaded, the same run ID might produce a
-different archive from NCBI.  We include a copy of the archive files
-to permit full reproducibility.
+some errors in the metadata of a few entries, NCBI has had to
+reprocess the data of a few files, causing fastq files to be modified,
+while keeping the same run ids. Depending when the .sra files are
+downloaded, the same run ID might produce a different archive from
+NCBI.  We include a copy of the archive files to permit full
+reproducibility.
 
 ### Aligned Sequences
 
@@ -169,10 +172,47 @@ Runs are aligned to a reference genome to produce an aligned BAM, and
 then aligned runs are subsequently grouped by sample name by a merge
 operation.
 
+- `cohorts/ha412v2/wgs_all/`:
+  - `s3://ubc-sunflower-genome/cohorts/ha412v2/wgs_all/bams.tsv`
+
+
+This file is in the following format:
+
+```
+SAMPLENAME	REFERENCE	OUTPUTURL
+291C	ha412	s3://ubc-sunflower-genome/build/merge.1-291C-sha1_bed13750e080dbca19785553fe9fe45e6771e861/bunnies.transform-result.json
+298C	ha412	s3://ubc-sunflower-genome/build/merge.1-298C-sha1_9bfe22ee12a8dd6bd8222f9922958eda6470a523/bunnies.transform-result.json
+371C	ha412	s3://ubc-sunflower-genome/build/merge.1-371C-sha1_124564817a7b2ae929c2d54fd261b1e7089df2b6/bunnies.transform-result.json
+442M	ha412	s3://ubc-sunflower-genome/build/merge.1-442M-sha1_4bb4074d8eadb4020b30635ddebdfd1764280059/bunnies.transform-result.json
+...
+```
+Each of the OUTPUTURL points to a JSON file which describes the
+various files produced in the transformation. The .bam (and associated index) will be
+located in the same folder as the json file.
+
+
 ### Genotypes (GATK Genomic VCFs, i.e. .g.vcf)
 
 Each aligned BAM is then fed through GATK's HaplotypeCaller to produce
 a Genomic VCF (.g.vcf).
+
+- `cohorts/ha412v2/wgs_all/`:
+  - s3://ubc-sunflower-genome/cohorts/ha412v2/wgs_all/gvcfs.tsv
+
+The files are in the following format:
+
+```
+SAMPLENAME	REFERENCE	OUTPUTURL
+291C	ha412	s3://ubc-sunflower-genome/build/genotype.1-291C-AS1-sha1_8ced42a8e4da42435a72955288ec8cba54ba9898/bunnies.transform-result.json
+298C	ha412	s3://ubc-sunflower-genome/build/genotype.1-298C-AS1-sha1_5ca396cd57528a4e0c80b32030fab59562f7e33b/bunnies.transform-result.json
+371C	ha412	s3://ubc-sunflower-genome/build/genotype.1-371C-AS1-sha1_1320eab5ac0f8cb5bce5b572fc31c70e89c3cde4/bunnies.transform-result.json
+...
+```
+
+Each of the OUTPUTURL points to a JSON file which describes the
+various files produced in the transformation. The .g.vcf.gz (and
+associated index) will be located in the same folder as the json file.
+
 
 ### Raw Short Variants
 
